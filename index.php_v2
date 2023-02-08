@@ -1,0 +1,239 @@
+<?php
+
+//ini_set('display_errors', 1);
+//ini_set('display_startup_erros', 1);
+//error_reporting(E_ALL);
+
+include_once './include/config.php';
+include_once './include/session.php';
+include_once './class/contemplado.class.php';
+include_once './class/aluno.class.php';
+include_once './class/contrato.class.php';
+include_once './class/logtran.class.php';
+include_once './imprimir.php';
+
+/**
+ * Pega um comteplado com um determinado status da lista de contemplados
+ * @param array $list lista de contemplados
+ * @param int $status status do contemplado
+ * @return boolean contemplado ou false
+ */
+function getContempladoByStatus($list, $status){
+    foreach ($list as $item) {
+        if($item->getStatus() == $status){
+            return $item;
+        }
+    }
+    return false;
+}
+
+ob_start();
+
+//request de inicio de aceite
+if (isset($_POST['btnEntrar'])) {
+
+    $ra = $_POST['ra'];
+    $cpf = str_replace(array('.', '-'), '', $_POST['cpf']); //remove ponto e traço
+
+    $arrayRaPendenciaFinanceira = array(
+        "470.230.708-85",
+        "478.603.348-01",
+        "478.153.898-30",
+        "503.753.568-94",
+        "444.449.294-07",
+        "446.450.358-60",
+        "424.665.238-50",
+        "460.455.408-08",
+        "470.923.478-74",
+        "459.469.758-54",
+        "457.081.088-86",
+        "362.087.628-20",
+        "389.088.928-00",
+        "449.242.808-95",
+        "062.585.013-03",
+        "486.081.188-74",
+        "451.543.558-22",
+        "446.463.478-81",
+        "456.785.058-07",
+        "476.124.988-98",
+        "472.657.718-26",
+        "497.346.888-63",
+        "450.986.128-10",
+        "457.766.628-69",
+        "440.745.708-23",
+        "480.693.858-04",
+        "490.335.358-31",
+        "491.145.888-70",
+        "489.509.838-93",
+        "490.885.468-86",
+        "451.019.378-51",
+        "475.277.158-63",
+        "413.297.578-90",
+        "134.747.267-30",
+        "469.373.388-13",
+        "472.125.748-13",
+        "496.335.448-90",
+        "473.002.978-03",
+        "394.514.558-92",
+        "410.287.828-96",
+        "457.375.088-62",
+        "454.939.828-03",
+        "450.896.818-05",
+        "463.099.218-94",
+        "443.378.908-90",
+        "503.010.428-37",
+        "432.077.758-10"
+    );
+
+
+    $pendencia = false;
+    foreach ($arrayRaPendenciaFinanceira as $item) {
+
+        $cpfsemmascara = str_replace(array('.', '-'), '', $item);;
+        
+        if($cpf == $cpfsemmascara)
+        {
+            $pendencia = true;
+          
+        break;
+        }
+    }
+
+     
+    $contrato = new contrato();
+    $contrato->selectLastPerletivo();
+
+    if(!$pendencia)
+    {
+
+            if ($ra != '' && $cpf != '') {
+                $c = new contemplado($ra, $contrato->getPerletivo());
+                //buscando contemplado
+                //$is = $c->select(false);
+                $lc = $c->selectAllByRaPerletivo();
+                
+                $c->select();
+                
+                
+                $contr = new contrato();
+                $contr->setId($c->getIdcontrato());
+                $contr->select();
+
+                if (count($lc) > 0) {
+                    //caso o aluno já tenha feito a confirmação da bolsa, não pode entrar novamente.
+                    if ($c = getContempladoByStatus($lc, contemplado::STATUS_AGUARDANDO)) {
+                        $a = new aluno(trim($c->getRa()), $c->getPerletivo(), $c->getCodcur());
+
+                        $a->setValorcredito($contr->getValorcredito());
+                        //buscando informações do aluno
+
+                        if ($a->select()) {
+                            if(strpos($a->getEmail(), '@li.facens.br')){
+                                $msg = "O e-mail {$a->getEmail()} foi desativado, por favor faça "
+                                . "a alteração do seu e-mail da Facens "
+                                . "<a href='http:///www3.facens.br/global/trocaemail'>AQUI<a>.";
+                                
+                                include './layout/form/home.form.php';
+                            }else{
+                                if ($a->getValorprincipal() != '') {
+                                    if ($a->getErro() == '') {
+                                        if ($a->getCpf() == $cpf) {
+                                            $_SESSION['aluno'] = serialize($a);
+
+                                            $log = new logtran($c->getIdcontrato(), $ra, logtran::ACEITE, date('Y-m-d H:i:s'));
+                                            $log->insert();
+
+                                            $listContratos = $contrato->selectAllByRAPerletivo($a->getRa(), $a->getPerletivo());
+                                            if(count($listContratos) == 1){
+                                                $contr = array_pop($listContratos);
+                                                header('location: ?contrato=' . $contr->getId() );
+                                            }
+                                            include './layout/grid/bolsas.grid.php';
+                                        } else {
+                                            $msg = "O CPF não confere com esse RA.";
+                                            include './layout/form/home.form.php';
+                                        }
+                                    } else {
+                                        $msg = "Aluno não matriculado no atual período letivo .";
+                                        include './layout/form/home.form.php';
+                                    }
+                                } else {
+                                    $msg = "Aluno não matriculado no atual período letivo.";
+                                    include './layout/form/home.form.php';
+                                }
+                            }
+                        } else {
+                            $msg = 'Aluno não encontrado.';
+                            include './layout/form/home.form.php';
+                        }
+                    } else if ($c = getContempladoByStatus ($lc, contemplado::STATUS_ENVIADO_EMAIL)) {
+                        $msg = 'Aguardando confirmação de aceite, acesse seu e-mail e confirme por favor!';
+                        include './layout/form/home.form.php';
+                    } else {
+                        $msg_ok = 'Sua bolsa já foi confirmada anteriormente :)';
+                        include './layout/form/home.form.php';
+                    }
+                    //caso o aluno esteja em mais de um curso
+                } else {
+                    $msg = 'Infelizmente você não foi contemplado :(';
+                    include './layout/form/home.form.php';
+                }
+            } else {
+                $msg = 'Por favor, não deixe nenhum campo em branco.';
+                include './layout/form/home.form.php';
+            }
+        }
+        else
+        {
+            $msg = "Aluno não regularmente matriculado.";   
+            include './layout/form/home.form.php';
+        }
+}
+
+//request para confirmação de aceite
+else if (isset($_POST['btnConfirma'])) {
+    //enviando copia em pdf para o email do aluno.
+    $data = date('Y-m-d H:i:s');
+    if (enviarCopia()) {
+        $a = unserialize($_SESSION['aluno']);
+        $c = new contemplado($a->getRa(), $a->getPerletivo());
+        $c->select();
+        
+        $a->selectRM();
+
+        echo "<div class='container-fluid'><div class='alert alert-danger text-center'>";
+        echo "Será enviado um e-mail para {$a->getEmail()} com um link de confirmação, acesse seu e-mail e confirme por favor clicando no link enviado.";
+        echo "</div></div>";
+
+        $c->setStatus(contemplado::STATUS_ENVIADO_EMAIL);
+        $c->setDatamodif($data);
+        if ($c->update()) {
+
+            $log = new logtran($c->getIdcontrato(), $a->getRa(), logtran::ACEITE, $data, logtran::ACEITE_VIEW, logtran::ACEITE_EMAIL);
+            $log->insert();
+        }
+    }
+} 
+
+else if (isset($_GET['contrato']) && isset($_SESSION['aluno'])) {
+    $a = new aluno();
+    $a = unserialize($_SESSION['aluno']);
+
+    $contemplado = new contemplado($a->getRa(), $a->getPerletivo());
+    $lc = $contemplado->selectAllByRaPerletivo();
+    if(isset($lc[$_GET['contrato']])){
+        $c = $lc[$_GET['contrato']];
+        $contrato = new contrato($c->getIdcontrato());
+        $contrato->select();
+        include './layout/form/aluno.form.php';
+    }else{
+        header('location: ./');
+    }
+} else {
+    //include './layout/grid/home.php';
+    include './layout/form/home.form.php';
+}
+
+$corpo = ob_get_clean();
+include './layout/page/mestre2.php';
+

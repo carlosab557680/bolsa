@@ -1,0 +1,264 @@
+/* 
+    Created on : 01/10/2014, 10:28:37
+    Author     : fbogila
+*/
+
+.principal{
+    display: block;
+    /*overflow: hidden;*/
+    font-family: calibri, arial;
+    /*width: 210mm;*/
+    /*height: 297mm;*/
+    /*margin: 2mm auto;*/
+    border: 1px solid #000;
+    background-color: #F7F7F7;
+    /*padding: 5mm 10mm;*/
+    overflow-y:scroll;
+    height: 400px;
+}
+
+.cabecalho{
+    height: 27mm;
+    width: 190mm;
+    border-bottom: 1px solid #000;
+    /*padding-top: 8mm;*/
+    /*padding-bottom: 6mm;*/
+    overflow: hidden;
+    display: inline-block;
+    background-color: white;
+}
+#img_cabecalho{
+    float: left;
+    width: 65mm;
+    height: 24mm;
+    margin: 0 4mm;
+    /*padding-top: 3mm;*/
+    padding-left: 2mm;
+}
+#img_cabecalho img{
+    margin-top: 6mm;
+    /*width: 64mm;*/
+    height: 16mm;
+}
+#txt_cabecalho{
+    float: left;
+    font-size: 9pt;
+    width: 103mm;
+    line-height: 1.2em;
+    padding-left: 12mm;
+
+}
+#txt_cabecalho h2{
+    margin: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+#conteudo{
+    font-family: arial;
+    /*position: absolute;*/
+    width: 190mm;
+    /*height: 191mm;*/
+    /*top: 90mm;*/
+    margin-bottom: 10mm;
+}
+#conteudo h2{
+    margin-top: 0mm;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14pt;
+}
+#conteudo p.texto{
+    margin-top: 20mm;
+    text-indent: 30mm;
+    line-height: 1.5em;
+    text-align: justify;
+}
+#dados{
+    font-family: arial;
+    font-size: 14px;
+    line-height: 1.5em;
+    /* position: absolute; */
+    width: 190mm;
+    /* height: 25mm; */
+    padding: 0.5mm 0mm;
+    /* top: 42mm; */
+    border-bottom: 0.04em solid black;
+    overflow: hidden;
+    display: block;
+}
+#dados h2{
+    margin-top: 0mm;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 13pt;
+    margin-bottom: 1mm;
+}
+#dados p.texto{
+    margin-top: 20mm;
+    text-indent: 30mm;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+#lbl_1 #lbl_nome{
+    display: inline-block;
+    width: 120mm;
+    float: left;
+}
+#lbl_1 #lbl_ra{
+    display: inline-block;
+    width: 67mm;
+    text-align: right;
+    float: left;
+}
+#lbl_1 .lbl_me{
+    display: inline-block;
+    width: 94mm;
+    float: left;
+}
+#lbl_1 .lbl_md{
+    display: inline-block;
+    width: 94mm;
+    text-align: right;
+    float: left;
+}
+#lbl_2 .nac, #lbl_3 .nac{
+    display: inline-block;
+    width: 62mm;
+    float: left;
+}
+#lbl_2 .rg,#lbl_2 .emissor{
+    display: inline-block;
+    width: 50mm;
+    float: left;
+}
+#lbl_2 .rg_en{
+    display: inline-block;
+    width: 70mm;
+    float: left;
+}
+.slt{
+    margin-top: 2mm;
+    margin-right: 2mm;
+}
+#curso{
+    font-family: arial;
+    border-bottom: 0.04em solid #000;
+    padding: 2mm 0;
+}
+#curso h3{
+    text-align: center;
+    font-size: 11pt;
+    line-height: 1.6em;
+    margin: 0;
+}
+.tr{
+    text-align: right;
+}
+.tl{
+    text-align: left;
+}
+.tc{
+    text-align: center;
+}
+th{
+    text-transform: none;
+    font-size: 10pt;
+}
+th.th_disc{
+    width: 90mm;
+}
+th.th_serie{
+    width: 12mm;
+}
+th.th_ano{
+    width: 15mm;
+}
+th.th_nota{
+    width: 20mm;
+}th.th_ch{
+    width: 27mm;
+}
+th.th_sit{
+    width: 24mm;
+}
+
+table{
+    font-size: 9pt;
+    text-align: center;
+    line-height: 1.6em;
+    font-family: arial;
+}
+#ultima{
+    page-break-before: auto;
+    height: 140mm;
+}
+#resultado{
+    font-family: arial;
+    font-size: 10pt;
+    margin-top: 10mm;
+    line-height: 1.5em;
+    border-bottom: 0.04em solid #000;
+}
+#formacao{
+    font-family: arial;
+    font-size: 10pt;
+    line-height: 1.5em;
+    margin-top: 1mm;
+}
+#observacao{
+    font-family: arial;
+    margin-top: 10mm;
+    text-align: justify;
+}
+#data{
+    font-family: arial;
+    margin-top: 28mm;
+    font-size: 10pt;
+}
+#assinatura{
+    font-family: arial;
+    margin-top: 18mm;
+}
+#secretaria, #diretor{
+    font-family: arial;
+    border-top: 1px solid black;
+    width: 90mm;
+    float: left;
+    text-align: center;
+    font-size: 9pt;
+}
+#secretaria{
+    margin-right: 10mm;
+}
+#diretor{
+    margin-left: 10mm;
+}
+#info{
+    font-family: arial;
+    margin-top: 10mm;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.invisible{
+        display: none;
+    }
+@media print{
+    .principal{
+        border: 0;
+        margin: 0;
+        padding: 0;
+        overflow-y:auto;
+        height: auto;
+        background-color: #fff;
+    }
+    #img_cabecalho{
+        padding-top: 3mm;
+    }
+    .invisible{
+        display: '';
+    }
+}

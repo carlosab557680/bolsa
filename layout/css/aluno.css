@@ -1,0 +1,112 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/10/2014, 10:47:53
+    Author     : fbogila
+*/
+
+th, td{
+    padding: 5px 0;
+}
+td{
+    border-top: none;
+}
+
+fieldset{
+    margin-bottom: 15px;
+}
+.table .bn{
+    border-top: none;
+    padding: 2px;
+}
+
+.mr{
+    margin-right: 4px;
+    margin-left: 20px;
+}
+.table .ml{
+    padding-left: 20px;
+}
+.plr{
+    padding-left: 20px;
+    margin-right: 4px;
+}
+.w10{
+    width: 10%;
+}
+.w15{
+    width: 15%;
+}
+.w40{
+    width: 40%;
+}
+.cross{
+    height: 45%; 
+    overflow-y: auto;
+}
+.highlight {
+    padding: 9px 14px;
+    margin-bottom: 14px;
+    /*background-color: #f7f7f9;*/
+    /*        border: 1px solid #e1e1e8;
+            border-top: none;*/
+    border-radius: 2px;
+    font-size: 11pt;
+}
+.info-aluno{
+    width: 50%;
+    float: left;
+}
+.graph{
+    width: 49%;
+    float: left;
+}
+.row strong{
+    /*width: 160px;*/
+    display: inline-block;
+    /*text-align: right;*/
+    margin: 2px;
+    margin-right: 8px;
+    padding: 2px;
+    /*color: #013e7f;*/
+    font-size: 11pt;
+    /*        border-bottom: 1px solid #e1e1e8;
+            border-right: 5px solid #e1e1e8;*/
+    padding-right: 4px;
+    /*font-style: italic;*/
+}
+.table strong{
+    margin-top: 1px;
+}
+.row{
+    margin-right: 2px;
+    margin-left: 10px;
+    /*display: inline-block;*/
+    margin-right: 50px;
+    float: left;
+}
+.filter{
+    margin-left: 20px;
+}
+.img_filter{
+    background: url(layout/img/filter.png) no-repeat;
+    background-position: 5px 15px;
+}
+.table .txt_filter{
+    padding-left: 25px;
+    vertical-align: middle;
+}
+.img_perfil > img{
+    width: 200px;
+    height: 140px;
+    float: left;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+}
+.graph{
+    /*width: 40%;*/
+    margin: 5% 3%;
+}

@@ -1,0 +1,14 @@
+#Removendo extensão .php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/\.]+)/?$ $1.php  [L,QSA]
+
+#Pagina de erro
+ErrorDocument 400 /semeng/pages/errors/error.php
+ErrorDocument 403 /semeng/pages/errors/error.php
+ErrorDocument 404 /semeng/pages/errors/error.php
+ErrorDocument 500 /semeng/pages/errors/error.php
+
+#Não listar arquivos em pastas
+#Options -Indexes

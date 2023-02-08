@@ -1,0 +1,234 @@
+
+/* ---------- CLEARFIX ---------- */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after { clear:both; }
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf { zoom: 1; }
+
+/* ---------- GENERAL ---------- */
+.round {
+    border-radius: 0.3125em; /* 5/16 */
+    -moz-border-radius: 0.3125em; /* 5/16 */
+    -webkit-border-radius: 0.3125em;  /*5/16 */
+}
+
+.fl { float: left; }
+.fr { /* float: right; */ }
+.cb { clear: both; }
+
+/*Temporary styles*/
+ul.temporary-button-showcase {
+    list-style-type: none;
+}
+
+ul.temporary-button-showcase li {
+    width: 24%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+body, form, ul {
+    /* font-family: "Droid Sans", Helvetica, Arial, sans-serif; */
+    /* font-family: "Tw Cen MT", Arial, Helvetica, sans-serif; */
+    /* line-height: 1.125em; */ /* 18/16 */
+    /* font-size: 12pt; */ 
+}
+
+p, .button, ul#nav li ul, ul#tabs, div.side-menu ul li a,
+.information-box, .confirmation-box, .error-box, .warning-box, ol, .regular-ul, 
+.custom-ul, blockquote, cite { font-size: 1.1em;/* 12/16 */ }
+
+ul#nav li{
+    text-transform: uppercase;
+}
+/* ---------- COLORS ---------- */
+a { color: #2069b4; }
+a:hover { color: #2a2e36; }
+
+p a, p a:hover { border-bottom: 1px dotted; }
+
+.blue {
+    background-color: #2069b4;
+    color: white;
+}
+.blue:hover {
+    background-color: #5081b3;
+    color: white;
+}
+
+
+/* Page Container Style */
+.page-full-width { padding: 0 1.875em; /* 30/16 */ }
+
+
+/* ---------- BUTTONS ---------- */
+.button {
+    padding: 0.600em; /* 10/12 */
+
+    display: inline-block;
+    text-decoration: none;
+    background-repeat: no-repeat;
+}
+
+.dark {
+    background-color: #3f4551;
+    color: white;
+}
+.dark:hover {
+    background-color: #5d6677;
+    color: white;
+}
+
+.dark-white {
+    color: #fff;
+}
+
+
+.text-upper { text-transform: uppercase; }
+
+.small-button { padding: 0.312em 1em; /* 5/16 16/16 */ }
+
+.image-left {
+    background-position: 0.833em center; /* 10/12 */
+    padding-left: 3em; /* 36/12 */
+}
+
+.image-right {
+    background-position: right center;
+    padding-right: 3em; /* 36/12 */
+}
+
+/* ---------- MENU ---------- */
+ul#nav {
+    list-style-type: none;
+    margin: auto 50px;
+}
+
+/*ul#nav li {
+        float: left;
+        margin-right: 0.312em;  5/16 
+        position: relative;
+        min-width: 110px;
+}*/
+
+ul#nav > li {
+    float: left;
+    margin-right: 0.312em;  /* 5/16 */
+    position: relative;
+
+}
+ul#nav li:first-child { margin-left: 0; }
+ul#nav li:hover ul { left: 0; /* On hover, we make the submenu visible again */ }	
+/* Persistent hover state, exactly the same style as the inner anchor on hover (.dark:hover) */
+ul#nav li:hover a, ul#nav li.active a {
+    /* background-color: #5d6677; */
+    background-color: #0f71ba;
+    color: #fff;
+}
+
+ul#nav li.v-sep {
+    /* border: 3px dashed #5A959A; */
+    /*border-right: 1px solid #4868AA;*/
+    /*        margin-right: 0.625em;  10/16 
+            padding-right: 0.625em;  10/16 */
+    font-size: 15pt;
+    /*text-align: center;*/
+}
+
+ul#nav li ul {
+    list-style-type: none;
+    position: absolute;
+    z-index: 999;
+    margin-top: -2px;
+    left: -9999px;
+}
+ul#nav li ul li a {
+    color: white;
+    padding: 0.833em 0.833em 0.833em 0.833em;
+    /*border-top: 1px solid #6a7282;*/
+    /*border-top: 1px solid #3863BB;*/
+    /*background: #5d6677 url('../images/menu-indicator.png') no-repeat right center;*/
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+}
+ul#nav li ul li:last-child a {
+    border-bottom-right-radius: 0.3125em; /* 5/16 */
+    border-bottom-left-radius: 0.3125em; /* 5/16 */
+    -moz-border-bottom-right-radius: 0.3125em; /* 5/16 */
+    -moz-border-bottom-left-radius: 0.3125em; /* 5/16 */
+    -webkit-border-bottom-right-radius: 0.3125em; /* 5/16 */
+    -webkit-border-bottom-left-radius: 0.3125em; /* 5/16 */
+}
+
+ul#nav li ul li a:hover { background-color: #7a8497; }
+
+
+/* ---------- TOP + HEADER ---------- */
+div#top-bar {
+    padding: 0.280em 0;
+}
+
+div#header { 
+    padding: 1.25em 0; /* 20/16 */
+    background: transparent url('../images/logo_fundo.jpg') top center repeat;
+}
+
+div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
+
+div#login-intro {
+    background: transparent url('../images/logo-facens.png') no-repeat left center;
+    background-size: 50px;
+    padding: 0.312em 0 0.312em 3.125em;
+}
+div#login-intro 
+{font-family: Courier New, monospace; margin: 0.312em 0 0 10px; color: #fff; font-size: 20pt;}
+div#login-intro h5 { color: #fff; margin: 0 0 0 10px;}
+
+a#company-branding img { height: 39px; }	
+a#company-branding-small img { height: 30px; }	
+
+/* ---------- TABS ---------- */
+ul#tabs { list-style-type: none; }
+
+ul#tabs li { float: left; }
+
+ul#tabs li a {
+    border: 1px solid #eeefef;
+    border-bottom: none;
+    padding: 1.666em 0.833em; /* 20/12 10/12 */
+    margin: 0 0.416em -1px 0;
+    display: block;
+    color: #9498a1;
+}
+ul#tabs li a:hover { color: #2a2e36; }
+
+ul#tabs li a.dashboard-tab {
+    background: transparent url('../images/tab-dashboard.png') no-repeat 0.833em center /* 10/12 */;
+    padding-left: 3em; /* 36/12 */	
+}
+
+ul#tabs li a.active-tab, ul#tabs li a.active-tab:hover {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2a2e36;
+}
+/* ---------- CONTENT ---------- */
+div#content {
+    background: #f8f9fa url('../images/artwork-pattern.png') repeat-x left bottom;
+    border: 1px solid #d9dbdd;
+    padding: 0 0 0.8em 0; /* 30/16 */
+    width: 400px;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 10px;
+}

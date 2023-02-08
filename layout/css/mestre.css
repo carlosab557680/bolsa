@@ -1,0 +1,224 @@
+/**
+ * Arquivo material css - Aplica estilo na p?gina mestre
+ *
+ * @author Alexandre Machado <machado@facens.br>
+ * @author Laura Paes <lauu_paes@hotmail.com>
+ *
+ */
+*{
+    /* margin:0; */
+    /* padding:0; */ 
+}
+/*form{
+    margin:0;
+    padding:0;
+}*/
+body{
+    /* background-image:url(../img/bg.png); */ 
+     
+    /* font-family: Tw Cen MT, Arial, Helvetica, sans-serif; */  
+    /* background-repeat:repeat; */ 
+    background-color: #2069B4;
+}
+/*a{
+    border:0px;
+}*/
+#top {
+    /*    background-image:url(../img/bg.png);
+        background-color: #013e7f;*/
+    background-position:left;
+    background-repeat:repeat;
+    height:120px;
+    /*background-color:#F15B29;*/
+}
+
+#top div a.logo{
+    position:relative;
+    margin:0px auto;
+    left:-6px;
+}
+#logo img{
+    border:0px;
+    margin-top:40px;
+
+}
+#logo{
+    height: 120px;
+    border: none;
+    margin-left: 50px;
+    background:url(../img/logofacens.png) no-repeat;
+    background-position: left center;
+    background-origin: padding-box;
+}
+#rodape {
+    height:45px;
+    text-align:center;
+    padding-top:15px;
+    color:#FFFFFF;
+    font:10px Arial, Helvetica, sans-serif;
+    background-color: #2069B4;
+}
+#corpo {
+    padding: 20px 5px 20px 5px;
+    /* text-align:center; */
+    background-color:White;
+    /* font-family: sans-serif; */ 
+    /* font-size: 12px; */ 
+    width: auto;
+    overflow: hidden;
+}
+.pagetitle{
+    /* height: 25px; */ 
+    background-color: #FFF;
+    color:  #013e7f;
+    /* text-align: center; */
+    text-transform: uppercase;
+    padding: 2px;
+    margin: 0;
+    border-bottom: 3px solid silver;
+    border-left: 1px solid silver;
+    text-align: left;
+}
+/*p {
+    font:12px Arial, Helvetica, sans-serif;
+    color:#023E7C;
+    text-align:center;
+}*/
+p.circ{
+    padding: 4px; 
+    font-size: 13pt; 
+    border: 1px solid #0f71ba; 
+    border-radius: 20px; 
+    width: 600px; 
+    margin: auto;
+}
+/*img {
+    border:1px solid #999999;
+}
+option
+{
+    min-width: 64px;
+}*/
+#menus
+{
+    /*    background-color: white;*/
+    width: 100%;
+
+}
+
+.botao {
+    /* background-color: #0f71ba; */
+    padding: 7px 10px;
+    color: #fff;
+    /* text-align: left; */
+    text-transform: uppercase;
+    border: none;
+    margin: 1px;
+    background: -moz-linear-gradient(top, #3fa4f0 0%, #0f71ba 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3fa4f0), color-stop(100%, #0f71ba));
+    background: -webkit-linear-gradient(top, #3fa4f0 0%, #0f71ba 100%);
+    background: -o-linear-gradient(top, #3fa4f0 0%, #0f71ba 100%);
+    background: -ms-linear-gradient(top, #3fa4f0 0%, #0f71ba 100%);
+    background: linear-gradient(to bottom, #3fa4f0 0%, #0f71ba 100%);
+    text-decoration: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.botao:hover {
+
+    background: -moz-linear-gradient(top, #0f71ba 0%, #3fa4f0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0f71ba), color-stop(100%,#3fa4f0 ));
+    background: -webkit-linear-gradient(top, #0f71ba 0%, #3fa4f0 100%);
+    background: -o-linear-gradient(top, #0f71ba 0%, #3fa4f0 100%);
+    background: -ms-linear-gradient(top, #0f71ba 0%, #3fa4f0 100%);
+    background: linear-gradient(to bottom, #0f71ba 0%, #3fa4f0 100%);
+
+}
+
+.breadcrumb{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.msg{
+    color: rgb(253, 56, 56);
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid rgb(223, 58, 58);
+    border-radius: 18px;
+    font-style: italic;
+    width: 600px;
+}
+.alert_color{
+    color: rgb(253, 56, 56);
+}
+.process_color{
+    color: darkorange;
+}
+.confirm_color{
+    color: forestgreen;
+}
+.txtGrande{
+    font-size: 13pt;
+}
+.tc{
+    text-align: center;
+}
+.tl{
+    text-align: left;
+}
+.tr{
+    text-align: right;
+}
+/*h3{
+    color: #013e7f;
+    font-style: italic;
+    text-transform: uppercase;
+}*/
+
+.regras, .conteudo{
+    float: left;
+}
+
+.regras{
+    display: block;
+    /*background-color: yellow;*/
+    width: 19%;
+    border: 1px solid #0f71ba;
+    border-radius: 4px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.regras ul{
+    padding-left: 30px;
+}
+.regras ul li{
+    text-align: left;
+    padding: 4px;
+}
+.regras ul li a{
+    color: #0f71ba;
+}
+.conteudo{
+    /*background-color: yellowgreen;*/
+    width: 60%;
+}
+.browsers {
+    border: none;
+    width: 36px;
+    height: 36px;
+}
+.periodo{
+    float: left; 
+    color: white; 
+    font-weight: bold;
+    /* border: 3px solid white; */ 
+    /* border-radius: 50px; */ 
+    padding: 20px; 
+    margin: 26px 100px 13px 300px;
+    text-transform: uppercase;
+    /* box-shadow: 0px 0px 52px -15px; */
+    font-size: 20pt;
+}
+
